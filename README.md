@@ -1,21 +1,11 @@
-# event-tuple
+# Challenge Two
 
-Helper classes for Event tuples
+## Creating Classes
 
-## Install
+Created UserClickOnButtonEvent and UserLongPressedEvent classes.
 
+UserClickedOnButtonEvent in the pokerdevs.event_tuple.event_tuple module innclude helper methods:
+  * timestamp(), event_id(), event_type(), button_id()
 
-Inside of a new virtualenv, you can pip install this module by doing the following :
-
-```
-$ .env) pip install git+https://github.com/pokerdevs/event-tuple-challenge.git@main
-```
-
-
-## How to test
-
-We make use of `pytest` which can be launched as follows:
-
-```
-$ .env) pytest -s
-```
+The UserLongPressedEvent includes helper methods:
+  * timestamp(), event_id(), event_type(), x(), y()
