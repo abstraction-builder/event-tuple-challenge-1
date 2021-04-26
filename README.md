@@ -1,21 +1,13 @@
-# event-tuple
+# Challenge Three
 
-Helper classes for Event tuples
+## Factory Constructor
 
-## Install
+Added a @classmethod factory constructor method create(...) to the classes
 
+It automatically creates an event_id:
+  * as a randomly generated string token
 
-Inside of a new virtualenv, you can pip install this module by doing the following :
+It will automatically create the value for timestamp:
+  * using the current system time
 
-```
-$ .env) pip install git+https://github.com/pokerdevs/event-tuple-challenge.git@main
-```
-
-
-## How to test
-
-We make use of `pytest` which can be launched as follows:
-
-```
-$ .env) pytest -s
-```
+For example: UserClickedOnButtonEvent.create(button_id='blabla')
