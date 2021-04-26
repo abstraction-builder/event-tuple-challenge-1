@@ -1,21 +1,6 @@
-# event-tuple
+# Challenge 5 
 
-Helper classes for Event tuples
-
-## Install
-
-
-Inside of a new virtualenv, you can pip install this module by doing the following :
-
-```
-$ .env) pip install git+https://github.com/pokerdevs/event-tuple-challenge.git@main
-```
-
-
-## How to test
-
-We make use of `pytest` which can be launched as follows:
-
-```
-$ .env) pytest -s
-```
+I'm not quite sure how to approch it but i think @classmethod decorator will be helpful.
+I'd store class name into a dictionary of class mapings. Then, inside EventTuple constructor
+i'd get correct class name provided by user and call 'create' class method with specified 
+arguments, and finally return the instance.
