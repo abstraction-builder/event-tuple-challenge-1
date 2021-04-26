@@ -4,6 +4,15 @@ class UserClickedOnButtonEvent:
     def __init__(self, event_id, timestamp, button_id, event_type="UserClickedOnButtonEvent"):
         self.event = (event_type, event_id, timestamp, button_id)
 
+    @classmethod
+    def create(cls, button_id):
+        import ulid, time
+        event_id = ulid.new()
+        timestamp = round(time.time() * 1000)
+        event = cls(event_id, timestamp, button_id, event_type="UserClickedOnButtonEvent")
+        return event
+
+
     def timestamp(self):
         # return time stamp. e.g 1619146052
         return self.event[2]
@@ -20,11 +29,22 @@ class UserClickedOnButtonEvent:
         # return event id. e.g "close_button"
         return self.event[3]
 
+    def __repr__(self):
+        return f"Type: {self.event_type()}, ID: {self.button_id()} "
+
 class UserLongPressedEvent:
     """ Class for uer long-pressed event """
 
-    def __init__(self, event_id, timestamp, x, y, event_type="UserLongPressedEvent"):
+    def __init__(self, event_id, timestamp, x=0, y=0, event_type="UserLongPressedEvent"):
         self.event = (event_type, event_id, timestamp, x, y)
+
+    @classmethod
+    def create(cls, x, y):
+        import ulid, time
+        event_id = ulid.new()
+        timestamp = round(time.time() * 1000)
+        event = cls(event_id, timestamp, x, y)
+        return event
 
     def timestamp(self):
         # return time stamp. e.g 1619146052
@@ -46,14 +66,20 @@ class UserLongPressedEvent:
         # return y coordinate on a grid
         return self.event[4]
 
-def main():
-    # testing UserClickedOneButoonEvent class
-    my_event = UserClickedOnButtonEvent("b5796505-68fd-40d5-814a-9d31f3f084b0", 1619146052, "close_button")
-    print(f"Event '{my_event.event_type()}' occured at {my_event.timestamp()} with ID: {my_event.button_id()}")
+    def __repr__(self):
+        return f"Type: {self.event_type()}, ID: {self.event_id()} "
 
-    # testing UserLongPressedEvent class
-    my_second_event = UserLongPressedEvent("1d0bfda2-fe1d-4c61-a8bb-2c7df89beddf", 1619146123, 340, 420)
-    print(f"Event '{my_second_event.event_type()}' occured at {my_second_event.timestamp()} with x = {my_second_event.x()} and y = {my_second_event.y()}")
+
+def challenge_3():
+    print(f"{5*'-'} From challenge 3 {5*'-'}")
+    click_event = UserClickedOnButtonEvent.create(button_id='foobarid')
+    print(f"UserClickedOnButtonEvent object -> {click_event}")
+    long_press = UserLongPressedEvent.create(124, 12)
+    print(f"UserLongPressedEvent object -> {long_press}")
+    print(f"{5*'-'} From challenge 3 {5*'-'}")
+
+def main():
+    challenge_3()
 
 if __name__ == '__main__':
     main() 
